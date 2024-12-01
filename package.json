@@ -1,0 +1,10 @@
+{
+  "name": "aoc-2024",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2"
+  }
+}
