@@ -1,13 +1,10 @@
 import fs from 'node:fs';
 
-const data = fs.readFileSync('./data/1.txt', 'utf8');
+const data = fs.readFileSync('./data/1.txt', 'utf8').trim().split('\n');
 
 const leftList = [];
 const rightList = [];
-for (const ln of data.split('\n')) {
-  if (!ln) {
-    continue;
-  }
+for (const ln of data) {
   const [lRaw, rRaw] = ln.trim().split(/\s+/);
   const l = Number.parseInt(lRaw ?? '', 10);
   const r = Number.parseInt(rRaw ?? '', 10);
