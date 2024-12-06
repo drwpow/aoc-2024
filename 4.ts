@@ -68,19 +68,16 @@ for (let y = 0; y < dataGrid.length; y++) {
       continue;
     }
     // fuck it, hardcodin
-    const counts: Record<string, number> = {};
-    for (const c of [
-      dataGrid[y - 1]?.[x - 1], // top-left
-      dataGrid[y - 1]?.[x + 1], // top-right
-      dataGrid[y + 1]?.[x + 1], // bottom-right
-      dataGrid[y + 1]?.[x - 1], // bottom-left
-    ]) {
-      if (!c) {
-        break;
-      }
-      counts[c] = (counts[c] ?? 0) + 1;
-    }
-    if (counts.M === 2 && counts.S === 2) {
+    const tl = dataGrid[y - 1]?.[x - 1];
+    const tr = dataGrid[y - 1]?.[x + 1];
+    const bl = dataGrid[y + 1]?.[x - 1];
+    const br = dataGrid[y + 1]?.[x + 1];
+    if (
+      (tl === 'M' && tr === 'M' && bl === 'S' && br === 'S') ||
+      (tl === 'S' && tr === 'M' && bl === 'S' && br === 'M') ||
+      (tl === 'S' && tr === 'S' && bl === 'M' && br === 'M') ||
+      (tl === 'M' && tr === 'S' && bl === 'M' && br === 'S')
+    ) {
       masExCount++;
     }
   }
